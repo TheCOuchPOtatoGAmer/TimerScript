@@ -1,0 +1,30 @@
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local Status = ReplicatedStorage:WaitForChild("Status")
+local GameStarted = ReplicatedStorage:WaitForChild("GameStarted")
+
+local gameTime = 60
+local intermissionTime = 30
+
+-- Function and Stuff
+
+function intermission()
+  for i = intermissionTime, 0, -1 do
+     Status.Value = "Intermission: "..i
+     wait(1)
+  end
+  GameStarted = true
+end
+
+function startGame()
+  for i = gameTime, 0, -1 do
+    Status.Value = "Game Time: "..i
+    wait(1)
+   end
+   GameStarted = false
+end
+
+while true do
+  intermission()
+  startGame()
+end
